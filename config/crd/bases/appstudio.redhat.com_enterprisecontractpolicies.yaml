@@ -78,6 +78,22 @@ spec:
                   type: object
                 minItems: 1
                 type: array
+              authorization:
+                description: List of image digests authorized to release
+                items:
+                  description: image digest authorized to release
+                  properties:
+                    digest:
+                      description: The image digest
+                      type: string
+                    commitSha:
+                      description: The commit sha
+                      type: string
+                    repoUrl:
+                      description: The repo url containing the component sources
+                      type: string
+                  type: object
+                type: array
             required:
             - sources
             type: object
