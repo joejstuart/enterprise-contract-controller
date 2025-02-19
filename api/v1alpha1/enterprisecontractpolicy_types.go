@@ -100,10 +100,16 @@ type VolatileCriteria struct {
 	// +kubebuilder:validation:Format:=date-time
 	EffectiveUntil string `json:"effectiveUntil,omitempty"`
 
+	// DEPRECATED: Use ImageDigest instead
 	// ImageRef is used to specify an image by its digest.
 	// +optional
 	// +kubebuilder:validation:Pattern=`^sha256:[a-fA-F0-9]{64}$`
 	ImageRef string `json:"imageRef,omitempty"`
+
+	// ImageDigest is used to specify an image by its digest.
+	// +optional
+	// +kubebuilder:validation:Pattern=`^sha256:[a-fA-F0-9]{64}$`
+	ImageDigest string `json:"imageDigest,omitempty"`
 }
 
 // VolatileSourceConfig specifies volatile configuration for a policy source.
