@@ -108,6 +108,9 @@ endif
 docker-push: ## Push docker image with the manager.
 	docker push ${IMG}
 
+.PHONY: release-image
+release-image: docker-build docker-push ## Build and push docker image using IMG variable.
+
 .PHONY: export-schema
 export-schema: generate ## Export the CRD schema to the schema directory as a json-store.org schema.
 	@mkdir -p dist

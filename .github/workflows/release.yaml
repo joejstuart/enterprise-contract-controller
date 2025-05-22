@@ -59,3 +59,12 @@ jobs:
           name: API Release ${{env.version}}
           tag_name: ${{env.version}}
           generate_release_notes: true
+
+      - name: Registry login (quay.io/enterprise-contract)
+        run: podman login -u ${{ secrets.BUNDLE_PUSH_USER_EC  }} -p ${{ secrets.BUNDLE_PUSH_PASS_EC }} quay.io
+
+      - name: Build and push controller image
+        env:
+          IMG: quay.io/enterprise-contract/enterprise-contract-controller:${{env.version}}
+        run: |
+          make release-image
